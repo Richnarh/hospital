@@ -1,0 +1,19 @@
+{% extends 'ui_main.html' %}
+
+{% block content %}
+
+<div class="right_col" role="main">
+    <div class="">
+        <div class="page-title">
+            <div class="card-body">
+                <h3>SUNYANI TECHNICAL UNIVERSITY CLINIC APP.</h3>
+                {% if group in request.user.groups.all %}
+
+                                <p>Name {{ group.name }}</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

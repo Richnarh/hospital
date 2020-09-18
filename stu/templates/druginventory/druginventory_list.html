@@ -1,0 +1,71 @@
+{% extends 'ui_main.html' %} {% block content %}
+
+<div class="right_col" role="main">
+    <div class="page-title">
+        <div class="title_left">
+            <h5 class="text-info">Drug Inventory {% for message in messages %}
+                <span class="float-right output text-white">
+                        <i class="fa fa-info"></i>
+                            {{message}}
+                    </span> {% endfor %}
+            </h5>
+        </div>
+
+        <div class="col-md-12 mx-auto">
+            <div class="separator"></div>
+
+            <div class="card table-responsive">
+                <h5 class="card-header">
+                    Drug Inventory
+                </h5>
+                <div class="card-body">
+                    <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap"
+                           cellspacing="0" width="100%">
+                        <thead>
+                        <tr>
+                            <th>Drug Name</th>
+                            <th>Quantity</th>
+                            <th>remark</th>
+                            <th>Signatory</th>
+                            <th>
+                                <span class="float-right">Cost Price</span>
+                            </th>
+                            <th>
+                                <span class="float-right">Selling Price</span>
+                            </th>
+                            <th>Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for drugs in druginventory_list %}
+                        <tr>
+                            <td>{{drugs.drug_name}}</td>
+                            <td>{{drugs.quantity}}</td>
+                            <td>{{drugs.remark}}</td>
+                            <td>{{drugs.signatory}}</td>
+                            <td>
+                                <span class="float-right">{{drugs.cost_price}}</span>
+                            </td>
+                            <td>
+                                <span class="float-right">{{drugs.selling_price}}</span>
+                            </td>
+                            <td>
+                                <a href="{% url 'update' drugs.id %}" class="btn btn-sm btn-primary text-white"><i
+                                        class="fa fa-edit"></i></a>
+                                <form action="{% url 'delete' drugs.id %}" method="post" class="d-inline">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-danger btn-sm">
+                                        <i class="fa fa-remove"></i>
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

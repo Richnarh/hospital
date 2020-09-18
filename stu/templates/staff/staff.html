@@ -1,0 +1,182 @@
+{% extends 'ui_main.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<div class="right_col" role="main">
+    <div class="page-title">
+        <div class="title_left">
+            <h5 class="text-info">Add a new staff
+                  {% for message in messages %}
+                    <span class="float-right output text-white">
+                        <i class="fa fa-info"></i>
+                            {{message}}
+                    </span>
+                  {% endfor %}
+            </h5>
+        </div>
+
+        <div class="col-md-12 mx-auto">
+            <div class="separator"></div>
+
+            <div class="card">
+                <h5 class="card-header">Staff Form</h5>
+                <div class="card-body">
+                    <form action="" method="post" >
+<!--                        enctype="multipart/form-data"-->
+                 {% csrf_token %}
+                <div class="form-row">
+                    <!-- first row -->
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <div class="col-sm-10">
+                                {{form.staff_id | as_crispy_field }}
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-10">
+                                 {{form.department | as_crispy_field }}
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Second row -->
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <div class="col-sm-10">
+                                {{form.title | as_crispy_field }}
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-10">
+                                {{form.surname | as_crispy_field}}
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- third row -->
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <div class="col-sm-10">
+                                {{form.other_name | as_crispy_field}}
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-10">
+                                {{form.birth_date | as_crispy_field}}
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- fouth row -->
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <div class="col-sm-10">
+                                {{form.gender | as_crispy_field}}
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-10">
+                                {{form.marital_status | as_crispy_field}}
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- fifth row -->
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <div class="col-sm-10">
+                                {{form.phone | as_crispy_field}}
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-10">
+                                {{form.address | as_crispy_field}}
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- sixth row -->
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <div class="col-sm-10">
+                                {{form.nationality | as_crispy_field}}
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-10">
+                                {{form.appointment_date | as_crispy_field}}
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- seventh row -->
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <div class="col-sm-10">
+                                {{form.qualification | as_crispy_field}}
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-10">
+                                 {{form.position | as_crispy_field}}
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <!-- ninth row -->
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <div class="col-sm-10">
+                                 {{form.home_town | as_crispy_field}}
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-10">
+                                 {{form.email | as_crispy_field}}
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- tenth row -->
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <div class="col-sm-10">
+                                {{form.next_of_kin | as_crispy_field}}
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-10">
+                                {{form.institution | as_crispy_field}}
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- tenth row -->
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <div class="col-sm-10">
+                               {{form.special_role | as_crispy_field}}
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-6 mx-auto" style="justify-content: center;">
+                        <button type="submit" class="btn btn-outline-info"><i class="fa fa-check"></i> Submit</button>
+                        <button type="reset" class="btn btn-danger">Reset</button>
+                    </div>
+                </div>
+            </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}

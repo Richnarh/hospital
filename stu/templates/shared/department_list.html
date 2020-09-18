@@ -1,0 +1,59 @@
+{% extends 'ui_main.html' %}
+
+{% block content %}
+
+    <div class="right_col" role="main">
+      <div class="">
+        <div class="page-title">
+          <div class="title_left">
+            <h5 class="text-info">Department Records {% for message in messages %}
+                <span class="float-right output text-white">
+                        <i class="fa fa-info"></i>
+                            {{message}}
+                    </span> {% endfor %}
+            </h5>
+          </div>
+
+             <div class="col-md-12 mx-auto">
+            <div class="separator"></div>
+
+            <div class="card table-responsive">
+                <h5 class="card-header">
+                    Department Records
+                </h5>
+                <div class="card-body">
+                    <table id="datatable-responsive" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+                        <thead>
+                            <tr>
+                                <th>Department Name</th>
+                                <th>HOD</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for department in department_list %}
+                            <tr>
+                                <td>{{department.dept_name}}</td>
+                                <td>{{department.hod}}</td>
+<!--                                <td>{{department.id}}</td>-->
+                                <td>
+                                    <a href="{% url 'dept-update' department.id %}" class="btn btn-sm btn-primary text-white"><i class="fa fa-edit"></i></a>
+                                    <form action="{% url 'dept-delete' department.id %}" method="post" class="d-inline">
+                                        {% csrf_token %}
+                                        <button type="submit" class="btn btn-danger btn-sm">
+                                            <i class="fa fa-remove"></i>
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        </div>
+      </div>
+    </div>
+
+{% endblock content %}

@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+{% load static %}
+<div class="animate form login_form">
+    <section class="login_content">
+        <form action="" method="post">
+            {% csrf_token %}
+            <span class="user-profile">
+                    <img src="{% static '4.png' %}" alt="login avatar">
+                </span>
+            <div class="pt-3">
+                {{form.username | as_crispy_field}}
+            </div>
+            <div>
+                {{form.password | as_crispy_field}}
+            </div>
+            <div>
+                <button class="btn btn-info btn-sm" type="submit">Login</button>
+            </div>
+        </form>
+        <div>
+            {% for message in messages %}
+            <p class="text-white alert alert-danger">{{message}}</p>
+            {% endfor %}
+        </div>
+        <div class="separator">
+            <div>
+                <p>©2020, STU - All Rights Reserved. STU</p>
+            </div>
+        </div>
+    </section>
+</div>
+
+{% endblock %}
